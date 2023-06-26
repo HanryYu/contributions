@@ -25,4 +25,7 @@ jobs:
           git add .
           git commit -m "Update contributions"
           git push
-
+          
+      - name: Save contributions data
+        run: |
+          echo '${{ toJson(steps.fetch_contributions.outputs.data) }}' > data/contributions.json
