@@ -29,6 +29,8 @@ jobs:
         run: npm run generate-contributions
 
       - name: Commit and Push Changes
+        env:
+          GH_TOKEN: ${{ secrets.bot }}
         run: |
           git config --global user.name "HanryYu"
           git config --global user.email "fishion@outlook.com"
