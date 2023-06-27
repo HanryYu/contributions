@@ -10,7 +10,7 @@ async function generateContributions() {
 
     console.log('Contributions data updated successfully.');
   } catch (error) {
-    console.error('Error updating contributions data:', error);
+    console.error('Error updating contributions data: ', error);
     process.exit(1);
   }
 }
