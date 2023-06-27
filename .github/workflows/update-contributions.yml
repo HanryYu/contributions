@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+  # run on every push on the master branch
+  push:
+    branches:
+    - main
+
 jobs:
   update-contributions:
     runs-on: ubuntu-latest
