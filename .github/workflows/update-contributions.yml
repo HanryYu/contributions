@@ -1,36 +1,34 @@
-name: Update Contributions
+name: Update Contributions Data
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天 UTC 00:00 运行
-      # allows to manually run the job at any time
-  workflow_dispatch:
-  
-  # run on every push on the master branch
-  push:
-    branches:
-    - master
+    - cron: "0 0 * * *"
 
 jobs:
   update-contributions:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Set Up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Dependencies
         run: npm install
 
-      - name: Fetch GitHub contributions
-        run: node fetch-contributions.js
+      - name: Generate Contributions Data
+        run: npm run generate-contributions
 
-      - name: Commit and push changes
+      - name: Commit and Push Changes
         run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@users.noreply.github.com'
-          git add .
-          git commit -m "Update contributions"
+          git config --global user.name "Your Name"
+          git config --global user.email "your-email@example.com"
+          git add date.json
+          git commit -m "Update contributions data"
           git push
 
       - name: Save contributions data
