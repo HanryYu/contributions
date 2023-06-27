@@ -1,5 +1,8 @@
 {
   "scripts": {
     "generate-contributions": "node generate-contributions.js"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
   }
 }
