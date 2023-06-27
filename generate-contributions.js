@@ -8,7 +8,7 @@ async function generateContributions() {
 
     fs.writeFileSync('date.json', JSON.stringify(contributionsData));
 
-    console.log('Contributions data updated successfully.');
+    console.log('Contributions data updated successfully. ');
   } catch (error) {
     console.error('Error updating contributions data: ', error);
     process.exit(1);
