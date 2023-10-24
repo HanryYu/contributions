@@ -3,7 +3,7 @@ const fs = require('fs');
 
 async function generateContributions() {
   try {
-    const response = await axios.get('https://green-wall.vercel.app/api/contribution/hanryyu');
+    const response = await axios.get('https://green-wall-o9zqtpat3-hanry.vercel.app/api/contribution/hanryyu');
     const contributionsData = response.data;
 
     fs.writeFileSync('date.json', JSON.stringify(contributionsData));
