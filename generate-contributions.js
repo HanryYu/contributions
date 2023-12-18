@@ -3,7 +3,7 @@ const fs = require('fs');
 
 async function generateContributions() {
   try {
-    const response = await axios.get('https://green-wall-iota.vercel.app/api/contribution/HanryYu');
+    const response = await axios.get('https://green-wall.leoku.dev/api/contribution/HanryYu');
     const contributionsData = response.data;
 
     fs.writeFileSync('date.json', JSON.stringify(contributionsData));
