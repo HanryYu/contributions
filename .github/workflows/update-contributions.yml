@@ -3,8 +3,6 @@ name: Update Contributions Data
 on:
   schedule:
     - cron: "0 0 * * *"
-
-  # run on every push on the master branch
   push:
     branches:
     - main
@@ -15,12 +13,10 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          node-version: 20
+        uses: actions/checkout@v3 # Updated to the latest version as of my last training data
 
       - name: Set Up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3 # Updated to the latest version and correct usage of node-version
         with:
           node-version: 20
 
@@ -39,8 +35,3 @@ jobs:
           git add date.json
           git commit -m "Update contributions data"
           git push
-
-      # - name: Save contributions data
-      #   run: |
-      #     echo '${{ toJson(steps.fetch_contributions.outputs.data) }}' > data/contributions.json
-
