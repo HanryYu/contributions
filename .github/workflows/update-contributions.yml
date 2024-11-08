@@ -5,7 +5,7 @@ on:
     - cron: "0 0 * * *"
   push:
     branches:
-    - main
+      - main
 
 jobs:
   update-contributions:
@@ -13,25 +13,18 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3 # Updated to the latest version as of my last training data
+        uses: actions/checkout@v3
 
       - name: Set Up Node.js
-        uses: actions/setup-node@v3 # Updated to the latest version and correct usage of node-version
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Generate Contributions Data
-        run: npm run generate-contributions
-
-      - name: Commit and Push Changes
+      - name: Generate Contributions Data and Update Gist
         env:
-          GH_TOKEN: ${{ secrets.bot }}
-        run: |
-          git config --global user.name "HanryYu"
-          git config --global user.email "fishion@outlook.com"
-          git add date.json
-          git commit -m "Update contributions data"
-          git push
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: node update-gist.js
